@@ -1,12 +1,12 @@
 class Player(object):
 
-    def __init__(self, name, type, race='Human', movement=30, health_max=50, inv_weight_max=100, inventory=[],
+    def __init__(self, name, race='Human', movement=30, health_max=50, inv_weight_max=100, inventory=[],
                  head=None, chest=None, shoulders=None,arms=None, hands=None, belt=None, legs=None, feet=None,
                  ring=None, neck=None, back=None, hand_main=None, hand_off=None,
                  strength=10, constitution=10, intelligence=10, charisma=10, dexterity=10):
         #Base Statistics
         self.name = name
-        self.type = type
+        self.type = 'player'
         self.race = race
         self.movement = movement
         self.health_max = health_max

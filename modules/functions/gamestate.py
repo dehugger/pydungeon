@@ -36,3 +36,4 @@ def load_game():
     Objects = load_obj_names()
     objs = []
     for obj in Objects.obj_names:
+        pass

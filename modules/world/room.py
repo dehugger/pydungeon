@@ -1,26 +1,26 @@
 class Room(object):
 
-    def __init__(self):
+    def __init__(self, id, name, coord):
         #descriptors
         self.id = id
         self.name = name
         self.coord = coord
 
         #exits
-        self.exit_west
-        self.exit_north
-        self.exit_east
-        self.exit_south
-        self.exit_up
-        self.exit_down
-        self.exit_other
-        self.exit_west_status
-        self.exit_north_status
-        self.exit_east_status
-        self.exit_south_status
-        self.exit_up_status
-        self.exit_down_status
-        self.exit_other_status
+        self.exit_west = None
+        self.exit_north = None
+        self.exit_east = None
+        self.exit_south = None
+        self.exit_up = None
+        self.exit_down = None
+        self.exit_other = None
+        self.exit_west_status = None
+        self.exit_north_status = None
+        self.exit_east_status = None
+        self.exit_south_status = None
+        self.exit_up_status = None
+        self.exit_down_status = None
+        self.exit_other_status = None
 
         #contains
         self.characters = []
