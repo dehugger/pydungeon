@@ -2,7 +2,7 @@ import _pickle
 
 def save_object(obj):
     save_name = 'saves/' + obj.name + '.p'
-    _pickle.dump(obj, open(save_name, 'wb'))
+    _pickle.dump(obj, open(save_name, 'wb'), protocol=0)
 
 def load_object(name):
     save_name = 'saves/' + name + '.p'

@@ -14,8 +14,7 @@ def create_player():
 def create_room():
     id = io.read('What is the rooms id?')
     name = io.read('What is the rooms name?')
-    coord = io.read('What is the rooms Coord?')
-    new_room = Room(id, name, coord)
+    new_room = Room(id, name)
     return new_room
 
 def create_game(player, room):
@@ -43,4 +42,4 @@ io.log(game.player.name)
 io.log(game.active_room.name)
 io.log(game.name)
 while True:
-    PlayerActions.input_parse(game.player, game.active_room)
+    PlayerActions.input_parse(game)

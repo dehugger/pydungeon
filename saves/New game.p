@@ -12,7 +12,7 @@ Rp4
 (dp5
 Vname
 p6
-Vnew_game
+Vnew game
 p7
 sVplayer
 p8
@@ -105,7 +105,7 @@ p46
 V1
 p47
 sg6
-VStarting Room
+Vstart
 p48
 sVdescription
 p49
