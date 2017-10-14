@@ -21,7 +21,7 @@ class Room(object):
         self.characters = []
         self.items = []
 
-    def create_exit(self, name='Door', location='north', description='A plain door', open_action='You open the door and step through', status='open', key=None):
-        exit_var = Exit(name, location, description, open_action, status, key)
+    def create_exit(self, name='Door', connects_to_room_id=1, location='north', description='A plain door', open_action='You open the door and step through', status='open', key=None):
+        exit_var = Exit(name, connects_to_room_id, location, description, open_action, status, key)
         return exit_var
 

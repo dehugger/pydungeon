@@ -1,5 +1,6 @@
 from modules.functions.io import io
 from modules.functions.gamestate import save_object
+from modules.functions.gamestate import create_room
 
 class PlayerActions():
 
@@ -60,8 +61,22 @@ class PlayerActions():
             io.log('That object could not be found.')
             return None
 
+        elif search_level == 'to':
+            for obj in game.active_room.characters:
+                if obj.name == name:
+                    return obj
+                else:
+                    pass
+            for obj in game.all_rooms:
+                if obj.name == name:
+                    return obj
+                else:
+                    pass
+            io.log('That object could not be found.')
+            return None
+
         else:
-            for character in game.active_room.charaters:
+            for character in game.active_room.characters:
                 if character.name == search_level:
                     for item in character.inventory:
                         if item.name == name:
@@ -93,13 +108,15 @@ class PlayerActions():
         actions = {
             'inspect': PlayerActions.inspect_object,
             'save': PlayerActions.save,
-            'exit': PlayerActions.action_exit
+            'exit': PlayerActions.action_exit,
+            'createroom': PlayerActions.add_room,
+            'moveroom':PlayerActions.move_room
         }
 
-        try:
-            actions[key](game, obj)
-        except:
-            io.log('action execution error')
+        #try:
+        actions[key](game, obj)
+        #except:
+            #io.log('action execution error')
 
     def mid_level_special_cases(key, game):
         return {
@@ -111,6 +128,8 @@ class PlayerActions():
         special_args = ['room']
 
         user_input = io.read('what would you like to do?')
+        if user_input == '':
+            return
         user_input_split = user_input.split()
         action = user_input_split[0]
         arg_count = len(user_input_split) - 1
@@ -130,7 +149,7 @@ class PlayerActions():
                 PlayerActions.top_actions(action, PlayerActions.mid_level_special_cases(arg, game), game)
             else:
                 obj = PlayerActions.obj_search(game, None, arg)
-                PlayerActions.top_actions(action, obj)
+                PlayerActions.top_actions(action, obj, game)
 
         elif arg_count == 0:
             PlayerActions.top_actions(action, None, game)
@@ -162,3 +181,14 @@ class PlayerActions():
 
     def action_exit(game, obj):
         exit()
+
+    def move_room(game, new_room):
+        old_room = game.active_room
+        game.active_room = new_room
+        message = game.player.name + ' leaves ' + old_room.name + ' and enters ' + new_room.name
+        io.log(message)
+
+    def add_room(game, obj):
+        room = create_room()
+        game.AddRoom(room)
+        io.log(room.name + ' added to game')

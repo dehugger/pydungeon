@@ -25,7 +25,7 @@ Ntp10
 Rp11
 (dp12
 g6
-VDave
+Vdave
 p13
 sVtype
 p14
@@ -129,27 +129,33 @@ Rp57
 g6
 VDoor
 p59
-sVlocation
+sVconnects_to_room_id
 p60
-Vnorth
+L1L
+sVlocation
 p61
+Vnorth
+p62
 sg49
 VA plain door
-p62
-sVopen_action
 p63
-VYou open the door and step through
+sVopen_action
 p64
-sVkey
+VYou open the door and step through
 p65
-NsVstatus
+sVkey
 p66
-Vopen
+NsVstatus
 p67
-sbasVcharacters
+Vopen
 p68
-(lp69
+sbasVcharacters
+p69
+(lp70
 sVitems
-p70
-(lp71
-sbsb.
+p71
+(lp72
+sbsVother_rooms
+p73
+(lp74
+sb.
