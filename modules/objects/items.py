@@ -36,8 +36,8 @@ class Item(object):
 
 class Weapon(Item):
 
-    def __init__(self, name, owner, weight=1, range='melee', damage=1, damage_type='raw', item_slot=hand_main, description='A Blade'):
-        Item.__init__(self, name, 'Weapon', owner, weight, True, description)
+    def __init__(self, id, location, location_description, name, owner, weight=1, range='melee', damage=1, damage_type='raw', item_slot='hand_main', description='A Blade'):
+        Item.__init__(self, id, location, location_description, name, 'Weapon', owner, weight, True, description)
         self.range = range
         self.damage = damage
         self.damage_type = damage_type

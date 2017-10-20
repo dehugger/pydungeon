@@ -25,3 +25,5 @@ class Room(object):
         exit_var = Exit(name, connects_to_room_id, location, description, open_action, status, key)
         return exit_var
 
+    def add_item(self, item):
+        self.items.append(item)
