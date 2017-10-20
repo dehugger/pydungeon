@@ -12,12 +12,12 @@ Allow easy creation of procedrural dungeons, with simple quests, enemies, leveli
 * Flesh out Characters and NPCs
 * Add Combat
 * Add all different item types:
-* Weapons
-* Armor
-* Consumables
-* Keys
-* Quest objects
-* mundane objects (eg. buckets, candles)
+  - Weapons
+  - Armor
+  - Consumables
+  - Keys
+  - Quest objects
+  - mundane objects (eg. buckets, candles)
 * Add lighting detection (is room dark, does the player have a torch, etc)
 * Add physical interactions between objects (e.g., using a bucket on a well, using fire on a unlit torch)
 * Add NPC Dialogue
