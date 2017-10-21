@@ -112,6 +112,7 @@ class PlayerActions():
             'save': PlayerActions.save,
             'exit': PlayerActions.action_exit,
             'equip': PlayerActions.equip,
+            'stats': PlayerActions.player_stats,
             'createroom': PlayerActions.add_room,
             'moveroom':PlayerActions.move_room,
             'createitem': PlayerActions.add_item
@@ -221,11 +222,101 @@ class PlayerActions():
                         else:
                             game.player.inventory.append(game.player.hand_main)
                             game.player.hand_main = obj
+
+                    elif obj.item_slot == 'hand_off':
+                        if game.player.hand_off == None:
+                            game.player.hand_off = obj
+                        else:
+                            game.player.inventory.append(game.player.hand_off)
+                            game.player.hand_off = obj
+
+                    elif obj.item_slot == 'head':
+                        if game.player.head == None:
+                            game.player.head = obj
+                        else:
+                            game.player.inventory.append(game.player.head)
+                            game.player.head = obj
+
+                    elif obj.item_slot == 'chest':
+                        if game.player.chest == None:
+                            game.player.chest = obj
+                        else:
+                            game.player.inventory.append(game.player.chest)
+                            game.player.chest = obj
+
+                    elif obj.item_slot == 'shoulders':
+                        if game.player.shoulders == None:
+                            game.player.shoulders = obj
+                        else:
+                            game.player.inventory.append(game.player.shoulders)
+                            game.player.shoulders = obj
+
+                    elif obj.item_slot == 'arms':
+                        if game.player.arms == None:
+                            game.player.arms = obj
+                        else:
+                            game.player.inventory.append(game.player.arms)
+                            game.player.arms = obj
+
+                    elif obj.item_slot == 'hands':
+                        if game.player.hands == None:
+                            game.player.hands = obj
+                        else:
+                            game.player.inventory.append(game.player.hands)
+                            game.player.hands = obj
+
+                    elif obj.item_slot == 'belt':
+                        if game.player.belt == None:
+                            game.player.belt = obj
+                        else:
+                            game.player.inventory.append(game.player.belt)
+                            game.player.belt = obj
+
+                    elif obj.item_slot == 'legs':
+                        if game.player.legs == None:
+                            game.player.legs = obj
+                        else:
+                            game.player.inventory.append(game.player.legs)
+                            game.player.legs = obj
+
+                    elif obj.item_slot == 'feet':
+                        if game.player.feet == None:
+                            game.player.feet = obj
+                        else:
+                            game.player.inventory.append(game.player.feet)
+                            game.player.feet = obj
+
+                    elif obj.item_slot == 'ring':
+                        if game.player.ring == None:
+                            game.player.ring = obj
+                        else:
+                            game.player.inventory.append(game.player.ring)
+                            game.player.ring = obj
+
+                    elif obj.item_slot == 'neck':
+                        if game.player.neck == None:
+                            game.player.neck = obj
+                        else:
+                            game.player.inventory.append(game.player.neck)
+                            game.player.neck = obj
+
+                    elif obj.item_slot == 'back':
+                        if game.player.back == None:
+                            game.player.back = obj
+                        else:
+                            game.player.inventory.append(game.player.back)
+                            game.player.back = obj
+
                     else:
                         io.log('Item cannot be equipped or item slot is not yet implemented')
+
+                    game.player.equipmentUpdate()
+                    game.player.calculateMaxHealth()
             else:
                 io.log('That item is not in the players inventory. You must take the item before you can equip it!')
 
+    def player_stats(game, obj):
+        io.log(game.player.getPlayerStats())
 
 #actions below are utilities for interacting with the gamestate, not true player actions
 

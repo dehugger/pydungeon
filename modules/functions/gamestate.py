@@ -3,7 +3,7 @@ from modules.functions.io import io
 from modules.objects.player import Player
 from modules.world.room import Room
 from modules.world.game import Game
-from modules.objects.items import Item, Weapon
+from modules.objects.items import Item, Weapon, Armor
 
 def save_object(obj):
     save_name = 'saves/' + obj.name + '.p'
@@ -100,7 +100,8 @@ def create_item(game):
         new_item = Weapon(id, location, location_description, name, owner)
 
     elif type in ['3', 'armor', 'Armor', 'ARMOR']:
-        new_item = None
+        new_item = Armor(id, location, location_description, name, owner)
+
     elif type in ['4', 'consumable', 'Consumable', 'CONSUMABLE']:
         new_item = None
 

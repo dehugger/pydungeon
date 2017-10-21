@@ -9,7 +9,8 @@ class Player(object):
         self.type = 'player'
         self.race = race
         self.movement = movement
-        self.health_max = health_max
+        self.base_health_max = health_max
+        self.health_max = self.base_health_max
         self.health_current = self.health_max
         self.inv_weight_max = inv_weight_max
         self.inventory = inventory
@@ -27,12 +28,15 @@ class Player(object):
         self.back = back
         self.hand_main = hand_main
         self.hand_off = hand_off
+        self.equipmentUpdate()
         #stats
         self.strength = strength
         self.constitution = constitution
         self.intelligence = intelligence
         self.charisma = charisma
         self.dexterity = dexterity
+
+        self.calculateMaxHealth()
 
     def takeDamage(self, damage_taken):
         self.health_current = self.health_current - damage_taken
@@ -59,3 +63,42 @@ class Player(object):
             return item.name + ' removed from ' + self.name + '\'s inventory'
         else:
             return item.name + ' could not be removed from ' + self.name + '\'s inventory because they did not have that item'
+
+    def equipmentUpdate(self):
+        self.equipment = [self.head, self.shoulders, self.chest, self.arms, self.hands, self.back, self.belt, self.legs, self.feet, self.hand_main, self.hand_off, self.ring, self.neck]
+
+    def calculateMaxHealth(self):
+        health_max_boost = 0
+        for item in self.equipment:
+            if item != None:
+                health_max_boost += item.health_effect
+        self.health_max = self.base_health_max + health_max_boost
+
+    def getPlayerStats(self):
+        player_stats = '''
+        \n
+        %(name)s Stats:\n
+        <-------------------------------------------->\n
+        HP Max         - %(maxhp)s \n
+        HP Current     - %(currenthp)s \n
+        Weight Max     - %(maxweight)s \n
+        Weight Carried - Not Implemented \n
+        Strength       - %(strength)s \n
+        Constitution   - %(constitution)s \n
+        Intelligence   - %(intelligence)s \n
+        Dexterity      - %(dexterity)s \n
+        Charisma       - %(charisma)s \n
+        <-------------------------------------------->
+        ''' % {
+            'name': self.name,
+            'maxhp': self.health_max,
+            'currenthp': self.health_current,
+            'maxweight': self.inv_weight_max,
+            'strength': self.strength,
+            'constitution': self.constitution,
+            'intelligence': self.intelligence,
+            'dexterity': self.dexterity,
+            'charisma': self.charisma
+        }
+
+        return player_stats
